@@ -1,3 +1,4 @@
+import 'package:amanyaa/screens/login.dart';
 import 'package:flutter/material.dart';
 import '../models/blog.dart';
 import '../services/blog_service.dart';
@@ -24,6 +25,41 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Blog'),
+        leading: const IconButton(
+          onPressed: null,
+          icon: Icon(Icons.person),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Çıkış'),
+                    content:
+                        const Text('Çıkış yapmak istediğinize emin misiniz?'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: const Text('Hayır'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()),
+                          );
+                        },
+                        child: const Text('Evet'),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              icon: const Icon(Icons.logout)),
+        ],
       ),
       body: FutureBuilder<List<Blog>>(
         future: _blogsFuture,
