@@ -50,5 +50,5 @@ app.*.map.json
 /macos/
 
 # Flutter/Dart specific files
-pubspec.lock
-analysis_options.yaml
+/pubspec.lock
+/analysis_options.yaml
