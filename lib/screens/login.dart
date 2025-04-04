@@ -72,6 +72,12 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
+                    labelStyle: const TextStyle(
+                        color: Color.fromARGB(255, 103, 17, 11)),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 103, 17, 11)),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
@@ -83,6 +89,12 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
+                    labelStyle: const TextStyle(
+                        color: Color.fromARGB(255, 103, 17, 11)),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 103, 17, 11)),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
@@ -101,7 +113,9 @@ class _LoginPageState extends State<LoginPage> {
                   child: const Text(
                     'LOGIN',
                     style: TextStyle(
-                        fontSize: 16, color: Color.fromARGB(255, 85, 14, 9)),
+                        fontSize: 16,
+                        color: Color.fromARGB(255, 85, 14, 9),
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 Row(
