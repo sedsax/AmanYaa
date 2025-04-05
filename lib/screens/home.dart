@@ -1,4 +1,5 @@
 import 'package:amanyaa/screens/login.dart';
+import 'package:amanyaa/screens/post_page.dart';
 import 'package:flutter/material.dart';
 import '../models/blog.dart';
 import '../services/blog_service.dart';
@@ -112,6 +113,16 @@ class _HomePageState extends State<HomePage> {
             }
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const PostPage()),
+          );
+        },
+        backgroundColor: const Color.fromARGB(255, 212, 153, 136),
+        child: const Icon(Icons.people),
       ),
     );
   }
