@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Blog'),
+        backgroundColor: const Color.fromARGB(255, 212, 153, 136),
         leading: const IconButton(
           onPressed: null,
           icon: Icon(Icons.person),
@@ -61,43 +62,56 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.logout)),
         ],
       ),
-      body: FutureBuilder<List<Blog>>(
-        future: _blogsFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No blogs available.'));
-          } else {
-            final blogs = snapshot.data!;
-            return ListView.builder(
-              itemCount: blogs.length,
-              itemBuilder: (context, index) {
-                final blog = blogs[index];
-                return Card(
-                  margin: const EdgeInsets.all(8.0),
-                  child: ExpansionTile(
-                    title: Text(
-                      blog.title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/home_pg.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: FutureBuilder<List<Blog>>(
+          future: _blogsFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              return const Center(
+                child: Text(
+                  'No blogs available.',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              );
+            } else {
+              final blogs = snapshot.data!;
+              return ListView.builder(
+                itemCount: blogs.length,
+                itemBuilder: (context, index) {
+                  final blog = blogs[index];
+                  return Card(
+                    margin: const EdgeInsets.all(8.0),
+                    child: ExpansionTile(
+                      title: Text(
+                        blog.title,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(blog.content),
+                        ),
+                      ],
                     ),
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(blog.content),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          }
-        },
+                  );
+                },
+              );
+            }
+          },
+        ),
       ),
     );
   }
