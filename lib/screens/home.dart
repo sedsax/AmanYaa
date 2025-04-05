@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const PostPage()),
+            MaterialPageRoute(builder: (context) => const UsersPage()),
           );
         },
         backgroundColor: const Color.fromARGB(255, 212, 153, 136),

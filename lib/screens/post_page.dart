@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../models/user_post.dart';
 import '../services/blog_service.dart';
 
-class PostPage extends StatefulWidget {
-  const PostPage({super.key});
+class UsersPage extends StatefulWidget {
+  const UsersPage({super.key});
 
   @override
-  State<PostPage> createState() => _PostPageState();
+  State<UsersPage> createState() => _UsersPageState();
 }
 
-class _PostPageState extends State<PostPage> {
+class _UsersPageState extends State<UsersPage> {
   final BlogService _blogService = BlogService();
   late Future<List<UserPost>> _userPostsFuture;
 
